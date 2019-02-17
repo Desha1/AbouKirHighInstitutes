@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "710654201005",
+    "firebase_url": "https://akhi-d2a62.firebaseio.com",
+    "project_id": "akhi-d2a62",
+    "storage_bucket": "akhi-d2a62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710654201005:android:00517269eda36713",
+        "android_client_info": {
+          "package_name": "com.example.mostafa.aboukirhighinstitutes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710654201005-5vt92bk15p13068kqg1u78kpbi0j9qc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mostafa.aboukirhighinstitutes",
+            "certificate_hash": "ec61fdfc2901d2287757ff06c0d689c33ad2c500"
+          }
+        },
+        {
+          "client_id": "710654201005-7j2kn54ji7uqk67jpdfjpdub3j7gjdvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-qo9WYkL5ECBRblEoVqE45hTpPy9ZSwo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710654201005-7j2kn54ji7uqk67jpdfjpdub3j7gjdvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">AKHI</string>
+
+    <!--Institute Name-->
+    <string name="higher_institute_of_computer_and_management_information_systems">Higher Institute of Computer and Management
+        Information Systems</string>
+    <string name="higher_institute_of_Tourism_and_hotels">Higher Institute of Tourism and Hotels</string>
+    <string name="higher_institute_of_monument_restoration">Higher Institute of Monument Restoration</string>
+
+    <!--Educational years-->
+    <string name="first_year">First Year</string>
+    <string name="second_year">Second Year</string>
+    <string name="third_year">Third Year</string>
+    <string name="fourth_year">Fourth Year</string>
+
+    <!--Semester-->
+    <string name="first_semester">First Semester</string>
+    <string name="second_semester">Second Semester</string>
+
+    <!--Sit Num-->
+    <string name="institute_name">Institute Name</string>
+    <string name="sit_num">Sit Number</string>
+    <string name="sit_num1">Sit Number: </string>
+    <string name="enter">Enter</string>
+    <string name="show_all_results">Show all Results</string>
+
+    <!--Students Details-->
+    <!--<string name="sit_num">Sit Number</string>-->
+    <string name="student_name">Student Name</string>
+    <string name="student_name1">Student Name: </string>
+    <string name="subject_name">Subject Name</string>
+    <string name="appreciation">Appreciation</string>
+    <string name="sub1">Sub1</string>
+    <string name="sub2">Sub2</string>
+    <string name="sub3">Sub3</string>
+    <string name="sub4">Sub4</string>
+    <string name="sub5">Sub5</string>
+    <string name="sub6">Sub6</string>
+    <string name="excellent">Excellent</string>
+    <string name="v_good">V.Good</string>
+    <string name="good">Good</string>
+    <string name="accepted">Accepted</string>
+    <string name="poor">Poor</string>
+    <string name="v_poor">V.Poor</string>
+    <string name="total_sum">Total Sum</string>
+    <string name="total_sum1">Total Sum: </string>
+    <string name="percentage">Percentage</string>
+    <string name="total_grade">Total Grade</string>
+    <string name="sit_numT">15043</string>
+
+
+    <!--Students List-->
+    <!--    <string name="student_name">Student Name</string> -->
+    <!--    <string name="sit_num">Sit Number</string> -->
+    <!--    <string name="total_grade">Total Grade</string> -->
+
+    <!--Higher Institute of Tourism and Hotels-->
+    <!--Higher Institute of Monument Restoration-->
+</resources>

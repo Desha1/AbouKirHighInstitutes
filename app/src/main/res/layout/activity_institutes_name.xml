@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InstitutesName"
+    android:orientation="vertical"
+    android:background="@color/background_blue">
+
+    <TextView
+        android:id="@+id/hicis"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:text="@string/higher_institute_of_computer_and_management_information_systems"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:background="@color/dark_purple"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/hith"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:text="@string/higher_institute_of_Tourism_and_hotels"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:background="@color/red"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/himr"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:text="@string/higher_institute_of_monument_restoration"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:padding="15dp"
+        android:textStyle="bold"
+        android:background="@color/orange"/>
+
+</LinearLayout>
