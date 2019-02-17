@@ -72,7 +72,6 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener, Va
         switch (v.getId()) {
 
             case R.id.enter_sit_number:
-                Log.e("sitNum", sitNum.getText().toString());
                 if (String.valueOf(sitNum.getText().toString()).equals("")) {
                     final AlertDialog.Builder aBuilder = new AlertDialog.Builder(SitNo.this);
                     aBuilder.setMessage("Enter your sit Number, and try again!").setCancelable(true);
@@ -86,16 +85,20 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener, Va
                     );
                     aBuilder.setTitle("Invalid number!");
                     aBuilder.show();
+                } else if (Long.parseLong(sitNum.getText().toString()) > 99999999) {
+                    Toast.makeText(this, "Out of index", Toast.LENGTH_LONG).show();
+
+                } else if (isNetworkConnected()) {
+                    intent = new Intent(this, StudentDetails.class);
+                    intent.putExtra("intent", getIntent + "SitNo");
+                    intent.putExtra("sitNum", sitNum.getText().toString());
+                    intent.putExtra("toStudentDetails", "sitNum");
+                    startActivity(intent);
                 } else {
-                    if (isNetworkConnected()) {
-                        intent = new Intent(this, StudentDetails.class);
-                        intent.putExtra("intent", getIntent + "SitNo");
-                        intent.putExtra("sitNum", sitNum.getText().toString());
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(this, "Please connect to the network", Toast.LENGTH_LONG).show();
-                    }
+                    Toast.makeText(this, "Please connect to the network", Toast.LENGTH_LONG).show();
                 }
+
+
                 break;
 
             case R.id.show_all_results:

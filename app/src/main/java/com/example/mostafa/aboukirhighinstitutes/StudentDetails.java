@@ -6,11 +6,9 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,96 +68,92 @@ public class StudentDetails extends AppCompatActivity {
     }
 
     private void checkIntentAndPutDataInElements() {
-        {
-            if (Integer.parseInt(getIntentSitNum) < 99999999) {
-                switch (getIntent) {
-                    //HICIS
-                    case "hicisFirstYearFirstSemesterSitNo":
-                        getDataFromDBFromHicisFirstYearFirstSemester();
-                        break;
-                    case "hicisFirstYearSecondSemesterSitNo":
-                        getDataFromDBFromHicisFirstYearSecondSemester();
-                        break;
-                    case "hicisSecondYearFirstSemesterSitNo":
-                        getDataFromDBFromHicisSecondYearFirstSemester();
-                        break;
-                    case "hicisSecondYearSecondSemesterSitNo":
-                        getDataFromDBFromHicisSecondYearSecondSemester();
-                        break;
-                    case "hicisThirdYearFirstSemesterSitNo":
-                        getDataFromDBFromHicisThirdYearFirstSemester();
-                        break;
-                    case "hicisThirdYearSecondSemesterSitNo":
-                        getDataFromDBFromHicisThirdYearSecondSemester();
-                        break;
-                    case "hicisFourthYearFirstSemesterSitNo":
-                        getDataFromDBFromHicisFourthYearFirstSemester();
-                        break;
-                    case "hicisFourthYearSecondSemesterSitNo":
-                        getDataFromDBFromHicisFourthYearSecondSemester();
-                        break;
 
-                    //HITH
-                    case "hithFirstYearFirstSemesterSitNo":
-                        getDataFromDBFromHithFirstYearFirstSemester();
-                        break;
-                    case "hithFirstYearSecondSemesterSitNo":
-                        getDataFromDBFromHithFirstYearSecondSemester();
-                        break;
-                    case "hithSecondYearFirstSemesterSitNo":
-                        getDataFromDBFromHithSecondYearFirstSemester();
-                        break;
-                    case "hithSecondYearSecondSemesterSitNo":
-                        getDataFromDBFromHithSecondYearSecondSemester();
-                        break;
-                    case "hithThirdYearFirstSemesterSitNo":
-                        getDataFromDBFromHithThirdYearFirstSemester();
-                        break;
-                    case "hithThirdYearSecondSemesterSitNo":
-                        getDataFromDBFromHithThirdYearSecondSemester();
-                        break;
-                    case "hithFourthYearFirstSemesterSitNo":
-                        getDataFromDBFromHithFourthYearFirstSemester();
-                        break;
-                    case "hithFourthYearSecondSemesterSitNo":
-                        getDataFromDBFromHithFourthYearSecondSemester();
-                        break;
 
-                    //HIMR
-                    case "himrFirstYearFirstSemesterSitNo":
-                        getDataFromDBFromHimrFirstYearFirstSemester();
-                        break;
-                    case "himrFirstYearSecondSemesterSitNo":
-                        getDataFromDBFromHimrFirstYearSecondSemester();
-                        break;
-                    case "himrSecondYearFirstSemesterSitNo":
-                        getDataFromDBFromHimrSecondYearFirstSemester();
-                        break;
-                    case "himrSecondYearSecondSemesterSitNo":
-                        getDataFromDBFromHimrSecondYearSecondSemester();
-                        break;
-                    case "himrThirdYearFirstSemesterSitNo":
-                        getDataFromDBFromHimrThirdYearFirstSemester();
-                        break;
-                    case "himrThirdYearSecondSemesterSitNo":
-                        getDataFromDBFromHimrThirdYearSecondSemester();
-                        break;
-                    case "himrFourthYearFirstSemesterSitNo":
-                        getDataFromDBFromHimrFourthYearFirstSemester();
-                        break;
-                    case "himrFourthYearSecondSemesterSitNo":
-                        getDataFromDBFromHimrFourthYearSecondSemester();
-                        break;
+        switch (getIntent) {
 
-                    default:
-                        // Get Data From Student List
-                        getDataFromStudentList();
-                }
-            } else {
-                Toast.makeText(this, "Out of index", Toast.LENGTH_LONG).show();
-            }
+            //HICIS
+            case "hicisFirstYearFirstSemesterSitNo":
+                getDataFromDBFromHicisFirstYearFirstSemester();
+                break;
+            case "hicisFirstYearSecondSemesterSitNo":
+                getDataFromDBFromHicisFirstYearSecondSemester();
+                break;
+            case "hicisSecondYearFirstSemesterSitNo":
+                getDataFromDBFromHicisSecondYearFirstSemester();
+                break;
+            case "hicisSecondYearSecondSemesterSitNo":
+                getDataFromDBFromHicisSecondYearSecondSemester();
+                break;
+            case "hicisThirdYearFirstSemesterSitNo":
+                getDataFromDBFromHicisThirdYearFirstSemester();
+                break;
+            case "hicisThirdYearSecondSemesterSitNo":
+                getDataFromDBFromHicisThirdYearSecondSemester();
+                break;
+            case "hicisFourthYearFirstSemesterSitNo":
+                getDataFromDBFromHicisFourthYearFirstSemester();
+                break;
+            case "hicisFourthYearSecondSemesterSitNo":
+                getDataFromDBFromHicisFourthYearSecondSemester();
+                break;
+
+            //HITH
+            case "hithFirstYearFirstSemesterSitNo":
+                getDataFromDBFromHithFirstYearFirstSemester();
+                break;
+            case "hithFirstYearSecondSemesterSitNo":
+                getDataFromDBFromHithFirstYearSecondSemester();
+                break;
+            case "hithSecondYearFirstSemesterSitNo":
+                getDataFromDBFromHithSecondYearFirstSemester();
+                break;
+            case "hithSecondYearSecondSemesterSitNo":
+                getDataFromDBFromHithSecondYearSecondSemester();
+                break;
+            case "hithThirdYearFirstSemesterSitNo":
+                getDataFromDBFromHithThirdYearFirstSemester();
+                break;
+            case "hithThirdYearSecondSemesterSitNo":
+                getDataFromDBFromHithThirdYearSecondSemester();
+                break;
+            case "hithFourthYearFirstSemesterSitNo":
+                getDataFromDBFromHithFourthYearFirstSemester();
+                break;
+            case "hithFourthYearSecondSemesterSitNo":
+                getDataFromDBFromHithFourthYearSecondSemester();
+                break;
+
+            //HIMR
+            case "himrFirstYearFirstSemesterSitNo":
+                getDataFromDBFromHimrFirstYearFirstSemester();
+                break;
+            case "himrFirstYearSecondSemesterSitNo":
+                getDataFromDBFromHimrFirstYearSecondSemester();
+                break;
+            case "himrSecondYearFirstSemesterSitNo":
+                getDataFromDBFromHimrSecondYearFirstSemester();
+                break;
+            case "himrSecondYearSecondSemesterSitNo":
+                getDataFromDBFromHimrSecondYearSecondSemester();
+                break;
+            case "himrThirdYearFirstSemesterSitNo":
+                getDataFromDBFromHimrThirdYearFirstSemester();
+                break;
+            case "himrThirdYearSecondSemesterSitNo":
+                getDataFromDBFromHimrThirdYearSecondSemester();
+                break;
+            case "himrFourthYearFirstSemesterSitNo":
+                getDataFromDBFromHimrFourthYearFirstSemester();
+                break;
+            case "himrFourthYearSecondSemesterSitNo":
+                getDataFromDBFromHimrFourthYearSecondSemester();
+                break;
+
+            default:
+                // Get Data From Student List
+                getDataFromStudentList();
         }
-
 
     }
 
@@ -367,6 +361,8 @@ public class StudentDetails extends AppCompatActivity {
 
 
     private void getDataFromStudentList() {
+        progressBar.setVisibility(View.GONE);
+        root.setVisibility(View.VISIBLE);
         // Get Data From Student List
         studentData = (Student) getIntent().getSerializableExtra("studentData");
 
