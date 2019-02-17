@@ -309,14 +309,14 @@ public class StudentsList extends AppCompatActivity implements ValueEventListene
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        if (dataSnapshot.exists()){
+        if (dataSnapshot.exists()) {
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                 progressBar.setVisibility(View.GONE);
                 Student student = snapshot.getValue(Student.class);
                 studentsList.add(student);
                 recyclerView.setAdapter(adapter);
             }
-        }else {
+        } else {
             final AlertDialog.Builder aBuilder = new AlertDialog.Builder(StudentsList.this);
             aBuilder.setMessage("Please check to Internet connection, \nplease check and try again!").setCancelable(false);
             aBuilder.setPositiveButton(

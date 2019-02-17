@@ -27,21 +27,21 @@ public class InstitutesName extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this,EducationalYears.class);
-        switch (v.getId()){
+        Intent intent = new Intent(this, EducationalYears.class);
+        switch (v.getId()) {
 
             case R.id.hicis:
-                intent.putExtra("intent","hicis");
+                intent.putExtra("intent", "hicis");
                 startActivity(intent);
                 break;
 
             case R.id.hith:
-                intent.putExtra("intent","hith");
+                intent.putExtra("intent", "hith");
                 startActivity(intent);
                 break;
 
             case R.id.himr:
-                intent.putExtra("intent","himr");
+                intent.putExtra("intent", "himr");
                 startActivity(intent);
                 break;
         }

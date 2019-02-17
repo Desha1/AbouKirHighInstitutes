@@ -70,7 +70,7 @@ public class StudentDetails extends AppCompatActivity {
     }
 
     private void checkIntentAndPutDataInElements() {
-         {
+        {
             if (Integer.parseInt(getIntentSitNum) < 99999999) {
                 switch (getIntent) {
                     //HICIS

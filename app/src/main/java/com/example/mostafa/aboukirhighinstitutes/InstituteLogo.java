@@ -28,13 +28,14 @@ public class InstituteLogo extends AppCompatActivity {
 
     DatabaseReference database;
     Student student;
+
     @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_institute_logo);
         database = FirebaseDatabase.getInstance().getReference();
-        student = new Student("test",0,100,100,100,100,100);
+        student = new Student("test", 0, 100, 100, 100, 100, 100);
         setInstitutesToFirebase();
 
         int secondsDelayed = 2000;
@@ -47,12 +48,13 @@ public class InstituteLogo extends AppCompatActivity {
     }
 
     //    Create an Institutes to firebase for a first time
-    private void setInstitutesToFirebase(){
+    private void setInstitutesToFirebase() {
         computerAndInformationSystem();
         tourismAndHotels();
         monumentRestoration();
     }
-    private void computerAndInformationSystem(){
+
+    private void computerAndInformationSystem() {
         //firstYear
         database.child("highInstituteForComputerAndInformationSystem")
                 .child("firstYear").child("firstSemester").child("test").setValue(student);
@@ -77,7 +79,8 @@ public class InstituteLogo extends AppCompatActivity {
         database.child("highInstituteForComputerAndInformationSystem")
                 .child("fourthYear").child("secondSemester").child("test").setValue(student);
     }
-    private void tourismAndHotels(){
+
+    private void tourismAndHotels() {
         //firstYear
         database.child("highInstituteForTourismAndHotels")
                 .child("firstYear").child("firstSemester").child("test").setValue(student);
@@ -102,7 +105,8 @@ public class InstituteLogo extends AppCompatActivity {
         database.child("highInstituteForTourismAndHotels")
                 .child("fourthYear").child("secondSemester").child("test").setValue(student);
     }
-    private void monumentRestoration(){
+
+    private void monumentRestoration() {
         //firstYear
         database.child("highInstituteForMonumentRestoration")
                 .child("firstYear").child("firstSemester").child("test").setValue(student);
@@ -128,7 +132,7 @@ public class InstituteLogo extends AppCompatActivity {
                 .child("fourthYear").child("secondSemester").child("test").setValue(student);
     }
 
-    private void test (){
+    private void test() {
         try {
             URL url = new URL("https://www.google.com.eg/");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -138,9 +142,9 @@ public class InstituteLogo extends AppCompatActivity {
             }
         } catch (MalformedURLException e) {
             //e.printStackTrace();
-            Log.e("invalid url","invalid url");
+            Log.e("invalid url", "invalid url");
         } catch (IOException e) {
-            Log.e("connection error","can not open connection to this url");
+            Log.e("connection error", "can not open connection to this url");
         }
     }
 

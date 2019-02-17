@@ -72,7 +72,7 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener, Va
         switch (v.getId()) {
 
             case R.id.enter_sit_number:
-                Log.e("sitNum",sitNum.getText().toString());
+                Log.e("sitNum", sitNum.getText().toString());
                 if (String.valueOf(sitNum.getText().toString()).equals("")) {
                     final AlertDialog.Builder aBuilder = new AlertDialog.Builder(SitNo.this);
                     aBuilder.setMessage("Enter your sit Number, and try again!").setCancelable(true);

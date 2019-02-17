@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class StudentAdapter  extends RecyclerView.Adapter<StudentViewHolder> {
+public class StudentAdapter extends RecyclerView.Adapter<StudentViewHolder> {
 
     private Context context;
     private ArrayList<Student> allStudent;
@@ -27,7 +27,7 @@ public class StudentAdapter  extends RecyclerView.Adapter<StudentViewHolder> {
     public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.row_design,viewGroup,false);
+        View view = inflater.inflate(R.layout.row_design, viewGroup, false);
         StudentViewHolder viewHolder = new StudentViewHolder(view);
         return viewHolder;
     }
@@ -43,7 +43,8 @@ public class StudentAdapter  extends RecyclerView.Adapter<StudentViewHolder> {
             }
         });
     }
-    interface StudentDetails{
+
+    interface StudentDetails {
         void onStudent(int position);
     }
 
@@ -58,7 +59,6 @@ public class StudentAdapter  extends RecyclerView.Adapter<StudentViewHolder> {
 }
 
 class StudentViewHolder extends RecyclerView.ViewHolder {
-
 
 
     private TextView name, sitNum, totalSum;
@@ -77,7 +77,7 @@ class StudentViewHolder extends RecyclerView.ViewHolder {
         root = itemView.findViewById(R.id.root);
     }
 
-    public void setData(Student student){
+    public void setData(Student student) {
 
         name.setText(student.getName());
         sitNum.setText(String.valueOf(student.getSitNum()));
