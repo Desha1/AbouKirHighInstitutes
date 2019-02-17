@@ -1,13 +1,17 @@
 package com.example.mostafa.aboukirhighinstitutes;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +24,7 @@ import java.util.ArrayList;
 
 public class StudentsList extends AppCompatActivity implements ValueEventListener {
 
+    private ProgressBar progressBar;
     private ArrayList<Student> studentsList;
     private DatabaseReference database;
     private RecyclerView recyclerView;
@@ -51,6 +56,7 @@ public class StudentsList extends AppCompatActivity implements ValueEventListene
     }
 
     public void defineAllElements() {
+        progressBar = findViewById(R.id.progress_bar);
         studentsList = new ArrayList<>();
         //put list to the adapter
         adapter = new StudentAdapter(this, studentsList);
@@ -303,11 +309,28 @@ public class StudentsList extends AppCompatActivity implements ValueEventListene
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-            Student student = snapshot.getValue(Student.class);
-            studentsList.add(student);
-            recyclerView.setAdapter(adapter);
+        if (dataSnapshot.exists()){
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                progressBar.setVisibility(View.GONE);
+                Student student = snapshot.getValue(Student.class);
+                studentsList.add(student);
+                recyclerView.setAdapter(adapter);
+            }
+        }else {
+            final AlertDialog.Builder aBuilder = new AlertDialog.Builder(StudentsList.this);
+            aBuilder.setMessage("Please check to Internet connection, \nplease check and try again!").setCancelable(false);
+            aBuilder.setPositiveButton(
+                    "OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }
+            );
+            aBuilder.setTitle("Internet connection!");
+            aBuilder.show();
         }
+
     }
 
     @Override

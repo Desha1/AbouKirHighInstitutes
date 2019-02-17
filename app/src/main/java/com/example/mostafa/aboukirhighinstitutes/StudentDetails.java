@@ -1,11 +1,18 @@
 package com.example.mostafa.aboukirhighinstitutes;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class StudentDetails extends AppCompatActivity {
 
+    LinearLayout root;
+    ProgressBar progressBar;
     ConstraintLayout lastSub;
     TextView studentName, subject1, subject2, subject3, subject4, subject5, subject6, totalAppreciation, sitNum, totalSum, percentage;
     Student studentData;
@@ -41,6 +50,9 @@ public class StudentDetails extends AppCompatActivity {
 
     private void defineAllElements() {
         // Define All Elements
+        root = findViewById(R.id.root);
+        root.setVisibility(View.GONE);
+        progressBar = findViewById(R.id.progress_bar);
         lastSub = findViewById(R.id.last_subject_layout);
         studentName = findViewById(R.id.student_name);
         sitNum = findViewById(R.id.sit_num);
@@ -57,98 +69,109 @@ public class StudentDetails extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference();
     }
 
-    private void checkIntentAndPutDataInElements(){
-        switch (getIntent) {
-            //HICIS
-            case "hicisFirstYearFirstSemesterSitNo":
-                getDataFromDBFromHicisFirstYearFirstSemester();
-                break;
-            case "hicisFirstYearSecondSemesterSitNo":
-                getDataFromDBFromHicisFirstYearSecondSemester();
-                break;
-            case "hicisSecondYearFirstSemesterSitNo":
-                getDataFromDBFromHicisSecondYearFirstSemester();
-                break;
-            case "hicisSecondYearSecondSemesterSitNo":
-                getDataFromDBFromHicisSecondYearSecondSemester();
-                break;
-            case "hicisThirdYearFirstSemesterSitNo":
-                getDataFromDBFromHicisThirdYearFirstSemester();
-                break;
-            case "hicisThirdYearSecondSemesterSitNo":
-                getDataFromDBFromHicisThirdYearSecondSemester();
-                break;
-            case "hicisFourthYearFirstSemesterSitNo":
-                getDataFromDBFromHicisFourthYearFirstSemester();
-                break;
-            case "hicisFourthYearSecondSemesterSitNo":
-                getDataFromDBFromHicisFourthYearSecondSemester();
-                break;
+    private void checkIntentAndPutDataInElements() {
+         {
+            if (Integer.parseInt(getIntentSitNum) < 99999999) {
+                switch (getIntent) {
+                    //HICIS
+                    case "hicisFirstYearFirstSemesterSitNo":
+                        getDataFromDBFromHicisFirstYearFirstSemester();
+                        break;
+                    case "hicisFirstYearSecondSemesterSitNo":
+                        getDataFromDBFromHicisFirstYearSecondSemester();
+                        break;
+                    case "hicisSecondYearFirstSemesterSitNo":
+                        getDataFromDBFromHicisSecondYearFirstSemester();
+                        break;
+                    case "hicisSecondYearSecondSemesterSitNo":
+                        getDataFromDBFromHicisSecondYearSecondSemester();
+                        break;
+                    case "hicisThirdYearFirstSemesterSitNo":
+                        getDataFromDBFromHicisThirdYearFirstSemester();
+                        break;
+                    case "hicisThirdYearSecondSemesterSitNo":
+                        getDataFromDBFromHicisThirdYearSecondSemester();
+                        break;
+                    case "hicisFourthYearFirstSemesterSitNo":
+                        getDataFromDBFromHicisFourthYearFirstSemester();
+                        break;
+                    case "hicisFourthYearSecondSemesterSitNo":
+                        getDataFromDBFromHicisFourthYearSecondSemester();
+                        break;
 
-            //HITH
-            case "hithFirstYearFirstSemesterSitNo":
-                getDataFromDBFromHithFirstYearFirstSemester();
-                break;
-            case "hithFirstYearSecondSemesterSitNo":
-                getDataFromDBFromHithFirstYearSecondSemester();
-                break;
-            case "hithSecondYearFirstSemesterSitNo":
-                getDataFromDBFromHithSecondYearFirstSemester();
-                break;
-            case "hithSecondYearSecondSemesterSitNo":
-                getDataFromDBFromHithSecondYearSecondSemester();
-                break;
-            case "hithThirdYearFirstSemesterSitNo":
-                getDataFromDBFromHithThirdYearFirstSemester();
-                break;
-            case "hithThirdYearSecondSemesterSitNo":
-                getDataFromDBFromHithThirdYearSecondSemester();
-                break;
-            case "hithFourthYearFirstSemesterSitNo":
-                getDataFromDBFromHithFourthYearFirstSemester();
-                break;
-            case "hithFourthYearSecondSemesterSitNo":
-                getDataFromDBFromHithFourthYearSecondSemester();
-                break;
+                    //HITH
+                    case "hithFirstYearFirstSemesterSitNo":
+                        getDataFromDBFromHithFirstYearFirstSemester();
+                        break;
+                    case "hithFirstYearSecondSemesterSitNo":
+                        getDataFromDBFromHithFirstYearSecondSemester();
+                        break;
+                    case "hithSecondYearFirstSemesterSitNo":
+                        getDataFromDBFromHithSecondYearFirstSemester();
+                        break;
+                    case "hithSecondYearSecondSemesterSitNo":
+                        getDataFromDBFromHithSecondYearSecondSemester();
+                        break;
+                    case "hithThirdYearFirstSemesterSitNo":
+                        getDataFromDBFromHithThirdYearFirstSemester();
+                        break;
+                    case "hithThirdYearSecondSemesterSitNo":
+                        getDataFromDBFromHithThirdYearSecondSemester();
+                        break;
+                    case "hithFourthYearFirstSemesterSitNo":
+                        getDataFromDBFromHithFourthYearFirstSemester();
+                        break;
+                    case "hithFourthYearSecondSemesterSitNo":
+                        getDataFromDBFromHithFourthYearSecondSemester();
+                        break;
 
-            //HIMR
-            case "himrFirstYearFirstSemesterSitNo":
-                getDataFromDBFromHimrFirstYearFirstSemester();
-                break;
-            case "himrFirstYearSecondSemesterSitNo":
-                getDataFromDBFromHimrFirstYearSecondSemester();
-                break;
-            case "himrSecondYearFirstSemesterSitNo":
-                getDataFromDBFromHimrSecondYearFirstSemester();
-                break;
-            case "himrSecondYearSecondSemesterSitNo":
-                getDataFromDBFromHimrSecondYearSecondSemester();
-                break;
-            case "himrThirdYearFirstSemesterSitNo":
-                getDataFromDBFromHimrThirdYearFirstSemester();
-                break;
-            case "himrThirdYearSecondSemesterSitNo":
-                getDataFromDBFromHimrThirdYearSecondSemester();
-                break;
-            case "himrFourthYearFirstSemesterSitNo":
-                getDataFromDBFromHimrFourthYearFirstSemester();
-                break;
-            case "himrFourthYearSecondSemesterSitNo":
-                getDataFromDBFromHimrFourthYearSecondSemester();
-                break;
+                    //HIMR
+                    case "himrFirstYearFirstSemesterSitNo":
+                        getDataFromDBFromHimrFirstYearFirstSemester();
+                        break;
+                    case "himrFirstYearSecondSemesterSitNo":
+                        getDataFromDBFromHimrFirstYearSecondSemester();
+                        break;
+                    case "himrSecondYearFirstSemesterSitNo":
+                        getDataFromDBFromHimrSecondYearFirstSemester();
+                        break;
+                    case "himrSecondYearSecondSemesterSitNo":
+                        getDataFromDBFromHimrSecondYearSecondSemester();
+                        break;
+                    case "himrThirdYearFirstSemesterSitNo":
+                        getDataFromDBFromHimrThirdYearFirstSemester();
+                        break;
+                    case "himrThirdYearSecondSemesterSitNo":
+                        getDataFromDBFromHimrThirdYearSecondSemester();
+                        break;
+                    case "himrFourthYearFirstSemesterSitNo":
+                        getDataFromDBFromHimrFourthYearFirstSemester();
+                        break;
+                    case "himrFourthYearSecondSemesterSitNo":
+                        getDataFromDBFromHimrFourthYearSecondSemester();
+                        break;
 
-            default:
-                // Get Data From Student List
-                getDataFromStudentList();
+                    default:
+                        // Get Data From Student List
+                        getDataFromStudentList();
+                }
+            } else {
+                Toast.makeText(this, "Out of index", Toast.LENGTH_LONG).show();
+            }
         }
+
+
     }
 
     private void query() {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        progressBar.setVisibility(View.GONE);
+                        root.setVisibility(View.VISIBLE);
                         studentData = snapshot.getValue(Student.class);
                         if (studentData != null) {
                             lastSubjectFoundCondition();
@@ -164,10 +187,28 @@ public class StudentDetails extends AppCompatActivity {
 
                             totalAppreciation.setText(studentData.getTotalGrade());
                             totalSum.setText(String.valueOf(studentData.getTotalSum()));
-                            percentage.setText(String.format("%s%%",String.valueOf(studentData.getPercentage())));
+                            percentage.setText(String.format("%s%%", String.valueOf(studentData.getPercentage())));
+                        } else {
+                            Toast.makeText(StudentDetails.this,
+                                    "Can't find this sit Number, please check and try again!", Toast.LENGTH_LONG).show();
                         }
                     }
-                } else Log.e("dataSnapshot", "out");
+                } else {
+                    final AlertDialog.Builder aBuilder = new AlertDialog.Builder(StudentDetails.this);
+                    aBuilder.setMessage("Invalid sit Number, \nplease check and try again!").setCancelable(false);
+                    aBuilder.setPositiveButton(
+                            "OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                }
+                            }
+                    );
+                    aBuilder.setTitle("Invalid number!");
+                    aBuilder.show();
+                    Toast.makeText(StudentDetails.this,
+                            "Invalid sit Number, please check and try again!", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -323,7 +364,6 @@ public class StudentDetails extends AppCompatActivity {
                 equalTo(Integer.parseInt(getIntentSitNum));
         query();
     }
-
 
 
     private void getDataFromStudentList() {

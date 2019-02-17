@@ -1,10 +1,14 @@
 package com.example.mostafa.aboukirhighinstitutes;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +18,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
@@ -22,13 +32,17 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class SitNo extends AppCompatActivity implements View.OnClickListener {
+import static android.net.wifi.WifiConfiguration.Status.strings;
+
+public class SitNo extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
 
 
     String getIntent;
     EditText sitNum;
     TextView showAllResults;
     Button enterButton;
+    boolean haveSitNum = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +52,13 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener {
 
         enterButton.setOnClickListener(this);
 
-        showAllResults.setPaintFlags(showAllResults.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        showAllResults.setPaintFlags(showAllResults.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         showAllResults.setOnClickListener(this);
 
     }
 
-    void defineAllElements(){
+    void defineAllElements() {
         getIntent = getIntent().getStringExtra("intent");
         sitNum = findViewById(R.id.sit_num);
         showAllResults = findViewById(R.id.show_all_results);
@@ -55,25 +69,45 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         Intent intent;
 
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.enter_sit_number:
-                if (isConnected(this)){
-                    intent = new Intent(this,StudentDetails.class);
-                    intent.putExtra("intent",getIntent+"SitNo");
-                    intent.putExtra("sitNum",sitNum.getText().toString());
-                    startActivity(intent);
-                }else {
-                    Toast.makeText(this,"Please connect to the network",Toast.LENGTH_LONG).show();
+                Log.e("sitNum",sitNum.getText().toString());
+                if (String.valueOf(sitNum.getText().toString()).equals("")) {
+                    final AlertDialog.Builder aBuilder = new AlertDialog.Builder(SitNo.this);
+                    aBuilder.setMessage("Enter your sit Number, and try again!").setCancelable(true);
+                    aBuilder.setPositiveButton(
+                            "OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    aBuilder.setCancelable(true);
+                                }
+                            }
+                    );
+                    aBuilder.setTitle("Invalid number!");
+                    aBuilder.show();
+                } else {
+                    if (isNetworkConnected()) {
+                        intent = new Intent(this, StudentDetails.class);
+                        intent.putExtra("intent", getIntent + "SitNo");
+                        intent.putExtra("sitNum", sitNum.getText().toString());
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(this, "Please connect to the network", Toast.LENGTH_LONG).show();
+                    }
                 }
-
                 break;
 
             case R.id.show_all_results:
-                intent = new Intent(this,StudentsList.class);
-                intent.putExtra("intent",getIntent+"SitNo");
-                startActivity(intent);
-                break;
+                if (isNetworkConnected()) {
+                    intent = new Intent(this, StudentsList.class);
+                    intent.putExtra("intent", getIntent + "SitNo");
+                    startActivity(intent);
+                    break;
+                } else {
+                    Toast.makeText(this, "Please connect to the network", Toast.LENGTH_LONG).show();
+                }
+
         }
 
     }
@@ -85,35 +119,18 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener {
         return cm.getActiveNetworkInfo() != null;
     }
 
-    public boolean isInternetAvailable() {
-        try {
-            final InetAddress address = InetAddress.getByName("https://www.google.com.eg/");
-            return !address.equals("");
-        } catch (UnknownHostException e) {
-            Toast.makeText(this,"Please connect to the network",Toast.LENGTH_LONG).show();
-        }
-        return false;
-    }
-
-    public static boolean isConnected(Context context) {
-        ConnectivityManager cm = (ConnectivityManager)context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork != null && activeNetwork.isConnected()) {
-            try {
-                URL url = new URL("https://www.google.com/");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                if (connection.getResponseCode() == 200) {
-                    return true;
-                }
-            } catch (MalformedURLException e) {
-                //e.printStackTrace();
-                Log.e("invalid url","invalid url");
-            } catch (IOException e) {
-                Log.e("connection error","can not open connection to this url");
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+            Student student = snapshot.getValue(Student.class);
+            if (student != null && sitNum.getText().toString().equals(String.valueOf(student.getSitNum()))) {
+                haveSitNum = true;
             }
         }
-        return false;
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+        Toast.makeText(this, "Their is some thing wrong in 'connection'", Toast.LENGTH_LONG).show();
     }
 }
