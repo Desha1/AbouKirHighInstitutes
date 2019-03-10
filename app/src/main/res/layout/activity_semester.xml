@@ -17,9 +17,9 @@
         android:textSize="25sp"
         android:textColor="@color/white"
         android:layout_margin="10dp"
-        android:padding="30dp"
+        android:padding="20dp"
         android:textAllCaps="false"
-        android:background="@color/orange"
+        android:background="@drawable/first_semester"
         android:layout_marginBottom="20dp"/>
 
     <Button
@@ -30,8 +30,8 @@
         android:textSize="25sp"
         android:textColor="@color/white"
         android:layout_margin="10dp"
-        android:padding="30dp"
+        android:padding="20dp"
         android:textAllCaps="false"
-        android:background="@color/red"
+        android:background="@drawable/second_semester"
         android:layout_marginTop="20dp"/>
 </LinearLayout>

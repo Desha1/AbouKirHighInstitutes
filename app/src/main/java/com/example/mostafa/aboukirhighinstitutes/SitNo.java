@@ -1,17 +1,13 @@
 package com.example.mostafa.aboukirhighinstitutes;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,26 +16,14 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.UnknownHostException;
-import java.util.Scanner;
-
-import static android.net.wifi.WifiConfiguration.Status.strings;
 
 public class SitNo extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
 
 
     String getIntent;
     EditText sitNum;
-    TextView showAllResults;
+    TextView showAllResults, instituteName;
     Button enterButton;
     boolean haveSitNum = false;
 
@@ -49,6 +33,14 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener, Va
         setContentView(R.layout.activity_sit_no);
 
         defineAllElements();
+
+        if (getIntent.contains("hicis")){
+            instituteName.setText("H.I.C.I.S");
+        }else if (getIntent.contains("hith")){
+            instituteName.setText("H.I.T.H");
+        }else if (getIntent.contains("himr")){
+            instituteName.setText("H.I.M.R");
+        }
 
         enterButton.setOnClickListener(this);
 
@@ -61,6 +53,7 @@ public class SitNo extends AppCompatActivity implements View.OnClickListener, Va
     void defineAllElements() {
         getIntent = getIntent().getStringExtra("intent");
         sitNum = findViewById(R.id.sit_num);
+        instituteName = findViewById(R.id.institute_name);
         showAllResults = findViewById(R.id.show_all_results);
         enterButton = findViewById(R.id.enter_sit_number);
     }

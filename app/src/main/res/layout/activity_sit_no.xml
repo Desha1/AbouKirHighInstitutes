@@ -23,6 +23,7 @@
             android:src="@drawable/hicis_logo"
             android:contentDescription="@string/institute_name"/>
         <TextView
+            android:id="@+id/institute_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/institute_name"
