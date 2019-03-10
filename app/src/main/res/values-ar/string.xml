@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AKHI</string>
+
+    <!--Institute Name-->
+    <string name="higher_institute_of_computer_and_management_information_systems">المعهد العالي للحاسبات ونظم العلومات</string>
+    <string name="higher_institute_of_Tourism_and_hotels">المعهد العالي للسياحة والفنادق</string>
+    <string name="higher_institute_of_monument_restoration">المعهد العالي لترميم الآثار</string>
+
+    <!--Educational years-->
+    <string name="first_year">الفرقة الأولى</string>
+    <string name="second_year">الفرقة الثانية</string>
+    <string name="third_year">الفرقة الثالثة</string>
+    <string name="fourth_year">الفرقة الرابعة</string>
+
+    <!--Semester-->
+    <string name="first_semester">الترم الأول</string>
+    <string name="second_semester">الترم الثاني</string>
+
+    <!--Sit Num-->
+    <string name="institute_name">أسماء المعاهد</string>
+    <string name="sit_num">رقم الجلوس</string>
+    <string name="sit_num1">رقم الجلوس :</string>
+    <string name="enter">إدخال</string>
+    <string name="show_all_results">إظهار جميع النتائج</string>
+
+    <!--Students Details-->
+    <!--<string name="sit_num">Sit Number</string>-->
+    <string name="student_name">اسم الطالب</string>
+    <string name="student_name1">اسم الطالب :</string>
+    <string name="subject_name">اسم المادة</string>
+    <string name="appreciation">التقدير</string>
+    <string name="sub1">المادة 1</string>
+    <string name="sub2">المادة 2</string>
+    <string name="sub3">المادة 3</string>
+    <string name="sub4">المادة 4</string>
+    <string name="sub5">المادة 5</string>
+    <string name="sub6">المادة 6</string>
+    <string name="sub7">المادة 7</string>
+    <string name="sub8">المادة 8</string>
+    <string name="excellent">ممتاز</string>
+    <string name="v_good">جبد جدا</string>
+    <string name="good">جبد</string>
+    <string name="accepted">مقبول</string>
+    <string name="poor">ضعيف</string>
+    <string name="v_poor">ضعيف جدا</string>
+    <string name="total_sum">المجموع الكلي</string>
+    <string name="total_sum1">المجموع الكلي :</string>
+    <string name="percentage">النسبة المؤية</string>
+    <string name="total_grade">التقدير الكلي</string>
+    <string name="sit_numT">15043</string>
+
+</resources>
+

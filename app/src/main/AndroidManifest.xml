@@ -14,9 +14,6 @@
         android:roundIcon="@drawable/hicis_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetStudentDataToFirebase">
-
-        </activity>
         <activity android:name=".EducationalYears" />
         <activity android:name=".Semester" />
         <activity android:name=".InstituteLogo">

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AKHI</string>
 
@@ -36,6 +37,8 @@
     <string name="sub4">Sub4</string>
     <string name="sub5">Sub5</string>
     <string name="sub6">Sub6</string>
+    <string name="sub7">sub7</string>
+    <string name="sub8">sub8</string>
     <string name="excellent">Excellent</string>
     <string name="v_good">V.Good</string>
     <string name="good">Good</string>
@@ -47,8 +50,6 @@
     <string name="percentage">Percentage</string>
     <string name="total_grade">Total Grade</string>
     <string name="sit_numT">15043</string>
-    <string name="sub7">sub7</string>
-    <string name="sub8">sub8</string>
 
 
 </resources>

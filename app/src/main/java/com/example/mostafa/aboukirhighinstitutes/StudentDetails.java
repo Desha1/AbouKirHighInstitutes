@@ -23,8 +23,10 @@ public class StudentDetails extends AppCompatActivity {
 
     LinearLayout root;
     ProgressBar progressBar;
-    ConstraintLayout lastSub;
-    TextView studentName, subject1, subject2, subject3, subject4, subject5, subject6, totalAppreciation, sitNum, totalSum, percentage;
+    ConstraintLayout lastSub6, lastSub7, lastSub8;
+    TextView studentName, subject1, subject2, subject3, subject4, subject5, subject6, subject7, subject8,
+            totalAppreciation, sitNum, totalSum, percentage;
+    TextView subjectName1, subjectName2, subjectName3, subjectName4, subjectName5, subjectName6, subjectName7, subjectName8;
     Student studentData;
     String getIntent;
     private String getIntentSitNum;
@@ -51,7 +53,9 @@ public class StudentDetails extends AppCompatActivity {
         root = findViewById(R.id.root);
         root.setVisibility(View.GONE);
         progressBar = findViewById(R.id.progress_bar);
-        lastSub = findViewById(R.id.last_subject_layout);
+        lastSub6 = findViewById(R.id.subject6_layout);
+        lastSub7 = findViewById(R.id.subject7_layout);
+        lastSub8 = findViewById(R.id.subject8_layout);
         studentName = findViewById(R.id.student_name);
         sitNum = findViewById(R.id.sit_num);
         subject1 = findViewById(R.id.sub1);
@@ -60,6 +64,16 @@ public class StudentDetails extends AppCompatActivity {
         subject4 = findViewById(R.id.sub4);
         subject5 = findViewById(R.id.sub5);
         subject6 = findViewById(R.id.sub6);
+        subject7 = findViewById(R.id.sub7);
+        subject8 = findViewById(R.id.sub8);
+        subjectName1 = findViewById(R.id.sub1_text);
+        subjectName2 = findViewById(R.id.sub2_text);
+        subjectName3 = findViewById(R.id.sub3_text);
+        subjectName4 = findViewById(R.id.sub4_text);
+        subjectName5 = findViewById(R.id.sub5_text);
+        subjectName6 = findViewById(R.id.sub6_text);
+        subjectName7 = findViewById(R.id.sub7_text);
+        subjectName8 = findViewById(R.id.sub8_text);
         totalAppreciation = findViewById(R.id.total_appreciation);
         totalSum = findViewById(R.id.total_sum);
         percentage = findViewById(R.id.percent);
@@ -172,12 +186,23 @@ public class StudentDetails extends AppCompatActivity {
                             studentName.setText(studentData.getName());
                             sitNum.setText(String.valueOf(studentData.getSitNum()));
 
+                            subjectName1.setText(studentData.getSubName1());
+                            subjectName2.setText(studentData.getSubName2());
+                            subjectName3.setText(studentData.getSubName3());
+                            subjectName4.setText(studentData.getSubName4());
+                            subjectName5.setText(studentData.getSubName5());
+                            subjectName6.setText(studentData.getSubName6());
+                            subjectName7.setText(studentData.getSubName7());
+                            subjectName8.setText(studentData.getSubName8());
+
                             subject1.setText(String.valueOf(studentData.getSubGrade1()));
-                            subject2.setText(studentData.getSubGrade2());
-                            subject3.setText(studentData.getSubGrade3());
-                            subject4.setText(studentData.getSubGrade4());
-                            subject5.setText(studentData.getSubGrade5());
-                            subject6.setText(studentData.getSubGrade6());
+                            subject2.setText(String.valueOf(studentData.getSubGrade2()));
+                            subject3.setText(String.valueOf(studentData.getSubGrade3()));
+                            subject4.setText(String.valueOf(studentData.getSubGrade4()));
+                            subject5.setText(String.valueOf(studentData.getSubGrade5()));
+                            subject6.setText(String.valueOf(studentData.getSubGrade6()));
+                            subject7.setText(String.valueOf(studentData.getSubGrade7()));
+                            subject8.setText(String.valueOf(studentData.getSubGrade8()));
 
                             totalAppreciation.setText(studentData.getTotalGrade());
                             totalSum.setText(String.valueOf(studentData.getTotalSum()));
@@ -367,8 +392,18 @@ public class StudentDetails extends AppCompatActivity {
         studentData = (Student) getIntent().getSerializableExtra("studentData");
 
         lastSubjectFoundCondition();
+
         studentName.setText(studentData.getName());
         sitNum.setText(String.valueOf(studentData.getSitNum()));
+
+        subjectName1.setText(studentData.getSubName1());
+        subjectName2.setText(studentData.getSubName2());
+        subjectName3.setText(studentData.getSubName3());
+        subjectName4.setText(studentData.getSubName4());
+        subjectName5.setText(studentData.getSubName5());
+        subjectName6.setText(studentData.getSubName6());
+        subjectName7.setText(studentData.getSubName7());
+        subjectName8.setText(studentData.getSubName8());
 
         subject1.setText(String.valueOf(studentData.getSubGrade1()));
         subject2.setText(String.valueOf(studentData.getSubGrade2()));
@@ -376,6 +411,8 @@ public class StudentDetails extends AppCompatActivity {
         subject4.setText(String.valueOf(studentData.getSubGrade4()));
         subject5.setText(String.valueOf(studentData.getSubGrade5()));
         subject6.setText(String.valueOf(studentData.getSubGrade6()));
+        subject7.setText(String.valueOf(studentData.getSubGrade7()));
+        subject8.setText(String.valueOf(studentData.getSubGrade8()));
 
         totalAppreciation.setText(studentData.getTotalGrade());
         totalSum.setText(String.valueOf(studentData.getTotalSum()));
@@ -383,8 +420,15 @@ public class StudentDetails extends AppCompatActivity {
     }
 
     private void lastSubjectFoundCondition() {
-        if (studentData.getSubGrade6() == null) {
-            lastSub.removeAllViews();
-        }
+        if (studentData.getSubGrade6() == null)
+            lastSub6.setVisibility(View.GONE);
+
+        if (studentData.getSubGrade7() == null)
+            lastSub7.setVisibility(View.GONE);
+
+        if (studentData.getSubGrade8() == null)
+            lastSub8.setVisibility(View.GONE);
     }
+
+
 }
